@@ -24,7 +24,7 @@ $ make
 
 1. Install MSYS2
 2. Run `MSYS2 MINGW64`
-3. Run `pacman -Syu mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake mingw-w64-x86_64-libpng git`
+3. Run `pacman -Sy mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake mingw-w64-x86_64-libpng git`
 4. git clone this repo
 5. Run the following
 ```
