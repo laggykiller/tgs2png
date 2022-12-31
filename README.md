@@ -40,6 +40,7 @@ cp /mingw64/bin/libpng*.dll ../dist
 cp /mingw64/bin/libwinpthread*.dll ../dist
 cp /mingw64/bin/zlib*.dll ../dist
 cp /mingw64/bin/libstdc++*.dll ../dist
+cp /mingw64/bin/libgcc_s_seh*.dll ../dist
 ```
 6. Result is in `dist` folder
 
