@@ -20,7 +20,33 @@ $ make
 # copy tgs2png somewhere into $PATH
 ```
 
-# Building (Windows)
+# Building (Visual Studio 17 2022) (Broken)
+1. Install cmake
+2. Install Visual Studio
+3. Install vcpkg to `C:\vcpkg` by:
+```
+cd C:\
+git clone https://github.com/Microsoft/vcpkg.git
+.\vcpkg\bootstrap-vcpkg.bat
+```
+4. Add `C:\vcpkg` to `PATH` environment variable
+5. Install libpng: `vcpkg install libpng:x64-windows`
+6. Open `Developer PowerShell`, change directory to tgs2png repo and execute:
+```
+mkdir build
+cd build
+cmake CMakeLists.txt -G "Visual Studio 17 2022" ..
+```
+7. Open `build/tgs2png.vcxproj` with `Visual Studio`
+8. On top bar, change `Debug` to `Release`
+9. On left bar, right click on "Solution 'tgs2png'" and press "Build Solution"
+10. In `Developer PowerShell` you had open, run: `cp .\rlottie\Release\* .\Release\`
+11. Copy `msvcp140.dll`, `vcruntime140.dll` and `vcruntime140_1.dll` into `tgs2png/build/Release`. They should be in somewhere like `C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Redist\MSVC\14.34.31931\x64\Microsoft.VC143.CRT`
+12. For sharing, use "tgs2png/build/Release/tgs2png.exe"
+
+- The resulting png file is broken
+
+# Building (Windows MSYS2 MINGW64) (Broken)
 
 1. Install MSYS2
 2. Run `MSYS2 MINGW64`
@@ -44,7 +70,11 @@ cp /mingw64/bin/libgcc_s_seh*.dll ../dist
 ```
 6. Result is in `dist` folder
 
-Note: `cmake -DCMAKE_EXE_LINKER_FLAGS="-static-libgcc -static-libstdc++ -static" -G "MinGW Makefiles" ..` will result in errors like `libpng16.a undefined reference to 'deflate'`
+- `cmake -DCMAKE_EXE_LINKER_FLAGS="-static-libgcc -static-libstdc++ -static" -G "MinGW Makefiles" ..` will result in errors like `libpng16.a undefined reference to 'deflate'`
+- Running -h is normal
+- Able to create png file but freeze after conversion
+- The resulting png file is broken
+- Note that -d will print the debug messages normally, then freeze after finishing
 
 # Running
 

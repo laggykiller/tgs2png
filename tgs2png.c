@@ -6,8 +6,9 @@
 #include <windows.h>
 #include <io.h>
 typedef SSIZE_T ssize_t;
-#include "getopt-for-windows/getopt.h"
-#include "sys/time.h"
+#include "winlibs/getopt.h"
+#include "winlibs/systime.h"
+#include "winlibs/nanosleep.h"
 #endif  /* _WIN32 */
 
 #include <stdbool.h>
