@@ -1,13 +1,17 @@
 #ifndef _WIN32
 #include <libgen.h>
+#include <unistd.h>
+#include <sys/time.h>
 #else
 #include <windows.h>
+#include <io.h>
+typedef SSIZE_T ssize_t;
+#include "getopt-for-windows/getopt.h"
+#include "sys/time.h"
 #endif  /* _WIN32 */
 
-#include <sys/time.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 #include <string.h>
 #include <assert.h>

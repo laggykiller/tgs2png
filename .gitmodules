@@ -1,3 +1,6 @@
 [submodule "rlottie"]
 	path = rlottie
 	url = https://github.com/zevlg/rlottie.git
+[submodule "getopt-for-windows"]
+	path = getopt-for-windows
+	url = https://github.com/Chunde/getopt-for-windows.git

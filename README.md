@@ -10,7 +10,7 @@ Requires:
 * librlottie `$ apt install librlottie-dev`
 * libpng `$ apt install libpng-dev`
 
-# Building
+# Building (*nix)
 
 ```console
 $ mkdir build
@@ -19,6 +19,31 @@ $ cmake ..
 $ make
 # copy tgs2png somewhere into $PATH
 ```
+
+# Building (Windows)
+
+1. Install MSYS2
+2. Run `MSYS2 MINGW64`
+3. Run `pacman -Syu mingw-w64-x86_64-cmake mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-libpng git`
+4. git clone this repo
+5. Run the following
+```
+cd tgs2png
+mkdir build
+cd build
+cmake -G "MinGW Makefiles" ..
+mingw32-make
+mkdir ../dist
+cp tgs2png.exe ../dist
+cp rlottie/librlottie.dll ../dist
+cp /mingw64/bin/libpng*.dll ../dist
+cp /mingw64/bin/libwinpthread*.dll ../dist
+cp /mingw64/bin/zlib*.dll ../dist
+cp /mingw64/bin/libstdc++*.dll ../dist
+```
+6. Result is in `dist` folder
+
+Note: `cmake -DCMAKE_EXE_LINKER_FLAGS="-static-libgcc -static-libstdc++ -static" -G "MinGW Makefiles" ..` will result in errors like `libpng16.a undefined reference to 'deflate'`
 
 # Running
 
